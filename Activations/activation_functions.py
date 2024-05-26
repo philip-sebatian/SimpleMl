@@ -19,7 +19,7 @@ class Softmax(Activation):
         self.func_der = lambda x: self.softmax_derivative(x)
     
     def softmax(self, x):
-        e_x = np.exp(x - np.max(x, axis=-1, keepdims=True))  
+        e_x = np.exp(x - np.max(x, axis=-1, keepdims=True))  # Subtract max for numerical stability
         return e_x / np.sum(e_x, axis=-1, keepdims=True)
     
     def softmax_derivative(self, x):
